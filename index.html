@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Estilo Discord</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Estilo customizado para a fonte e tema */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Cores baseadas no tema escuro do Discord */
+        :root {
+            --background-primary: #313338;
+            --background-secondary: #2b2d31;
+            --background-tertiary: #1e1f22;
+            --header-primary: #f2f3f5;
+            --text-normal: #dcdee1;
+            --text-muted: #949ba4;
+            --interactive-normal: #b5bac1;
+            --interactive-hover: #dcdee1;
+            --interactive-active: #ffffff;
+        }
+
+        /* Scrollbar customizada para se assemelhar ao Discord */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-corner {
+            background-color: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--background-tertiary);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: var(--background-secondary);
+            border-radius: 4px;
+        }
+
+        /* Efeito de blur no fundo quando o modal está aberto */
+        .modal-open-blur {
+            filter: blur(4px);
+            transition: filter 0.2s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-[#313338] text-[#dcdee1] overflow-hidden">
+
+    <!-- Container Principal -->
+    <div id="main-container" class="flex h-screen transition-all duration-200 ease-out">
+
+        <!-- Barra de Servidores (Navegação Principal) -->
+        <nav class="bg-[#1e1f22] p-3 flex flex-col items-center space-y-3">
+            <!-- Ícone de "servidor" - abre o perfil -->
+            <button id="open-profile-btn" class="group relative bg-[#313338] h-12 w-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 ease-out hover:bg-indigo-500 hover:rounded-2xl">
+                <img src="https://placehold.co/100x100/7289da/ffffff?text=EU" alt="Ícone de perfil do usuário" class="rounded-full h-full w-full object-cover">
+                <span class="absolute left-full ml-4 w-auto min-w-max px-3 py-1.5 bg-[#1e1f22] text-sm font-semibold text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap -translate-x-2 group-hover:translate-x-0">
+                    Meu Perfil
+                </span>
+            </button>
+            <div class="w-8 h-0.5 bg-[#42454a] rounded-full"></div>
+            <!-- Outros links de navegação -->
+            <div class="group relative bg-[#313338] h-12 w-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 ease-out hover:bg-green-600 hover:rounded-2xl">
+                <svg class="h-6 w-6 text-gray-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                <span class="absolute left-full ml-4 w-auto min-w-max px-3 py-1.5 bg-[#1e1f22] text-sm font-semibold text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap -translate-x-2 group-hover:translate-x-0">
+                    Projetos
+                </span>
+            </div>
+            <div class="group relative bg-[#313338] h-12 w-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 ease-out hover:bg-yellow-500 hover:rounded-2xl">
+                <svg class="h-6 w-6 text-gray-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                 <span class="absolute left-full ml-4 w-auto min-w-max px-3 py-1.5 bg-[#1e1f22] text-sm font-semibold text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap -translate-x-2 group-hover:translate-x-0">
+                    Sobre Mim
+                </span>
+            </div>
+             <div class="group relative bg-[#313338] h-12 w-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 ease-out hover:bg-red-500 hover:rounded-2xl">
+                <svg class="h-6 w-6 text-gray-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                 <span class="absolute left-full ml-4 w-auto min-w-max px-3 py-1.5 bg-[#1e1f22] text-sm font-semibold text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap -translate-x-2 group-hover:translate-x-0">
+                    Contato
+                </span>
+            </div>
+        </nav>
+
+        <!-- Barra de Canais e Conteúdo Principal -->
+        <div class="bg-[#2b2d31] flex-1 flex flex-col">
+            <!-- Header (Topo) -->
+            <header class="h-12 flex-shrink-0 flex items-center px-4 shadow-md bg-[#2b2d31]">
+                <div class="flex items-center">
+                    <svg class="h-6 w-6 text-[#949ba4]" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M10 19a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h1v-2a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h4Z"/><path d="M14 5a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-1v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-4Z"/></svg>
+                    <span class="ml-2 font-bold text-white">geral</span>
+                </div>
+            </header>
+
+            <!-- Conteúdo Principal (Simula um chat) -->
+            <main class="flex-1 p-4 overflow-y-auto">
+                <div class="space-y-6">
+                    <!-- Mensagem de boas-vindas -->
+                    <div class="flex items-start space-x-4">
+                        <img src="https://placehold.co/80x80/5865f2/ffffff?text=BOT" alt="Ícone de perfil do bot" class="h-10 w-10 rounded-full mt-1">
+                        <div>
+                            <p class="font-semibold text-[#f2f3f5]">Portifólio Bot <span class="text-xs font-medium bg-indigo-500 text-white rounded px-1.5 py-0.5 ml-1">BOT</span><span class="ml-3 text-xs text-[#949ba4]">Hoje às 14:20</span></p>
+                            <p class="text-[#dcdee1]">Bem-vindo(a) ao meu universo! Sou <span class="font-bold text-white">Seu Nome</span>, um desenvolvedor e designer apaixonado por criar experiências digitais memoráveis.</p>
+                            <p class="text-[#dcdee1] mt-2">Sinta-se à vontade para navegar pelos "servidores" à esquerda para conhecer meus projetos e habilidades. Para ver um resumo do meu perfil, clique no meu ícone no topo da lista de servidores.</p>
+                        </div>
+                    </div>
+                     <!-- Exemplo de projeto -->
+                    <div class="flex items-start space-x-4">
+                        <img src="https://placehold.co/80x80/7289da/ffffff?text=EU" alt="Ícone de perfil do usuário" class="h-10 w-10 rounded-full mt-1">
+                        <div>
+                            <p class="font-semibold text-[#f2f3f5]">Seu Nome <span class="ml-3 text-xs text-[#949ba4]">Hoje às 14:22</span></p>
+                            <div class="bg-[#202225] p-4 rounded-lg mt-1 border-l-4 border-indigo-500 max-w-2xl">
+                                <span class="text-sm font-semibold text-[#949ba4]">PROJETO EM DESTAQUE</span>
+                                <h3 class="text-lg font-bold text-white mt-1">Redesign do E-commerce "TechZone"</h3>
+                                <p class="text-[#dcdee1] mt-2">Um projeto completo de UX/UI e desenvolvimento front-end para uma loja de eletrônicos, focado em uma experiência de compra mais intuitiva e moderna.
+                                </p>
+                                <div class="mt-3">
+                                    <span class="inline-block bg-[#2b2d31] text-xs font-semibold text-[#dcdee1] px-2 py-1 rounded-full mr-2">#React</span>
+                                    <span class="inline-block bg-[#2b2d31] text-xs font-semibold text-[#dcdee1] px-2 py-1 rounded-full mr-2">#TailwindCSS</span>
+                                    <span class="inline-block bg-[#2b2d31] text-xs font-semibold text-[#dcdee1] px-2 py-1 rounded-full">#Figma</span>
+                                </div>
+                                <a href="#" class="inline-block mt-4 text-sm font-semibold text-indigo-400 hover:underline">Ver projeto completo &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal de Perfil de Usuário (Inicialmente escondido) -->
+    <div id="profile-modal-overlay" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none transition-opacity duration-300 ease-out">
+        
+        <!-- Conteúdo do Modal -->
+        <div id="profile-modal-content" class="w-full max-w-[600px] bg-[#1e1f22] rounded-lg shadow-2xl scale-95 transform transition-transform duration-300 ease-out">
+            <!-- Botão de Fechar -->
+            <button id="close-profile-btn" class="absolute top-4 right-4 text-[#b5bac1] hover:text-[#dcdee1] z-10">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </button>
+
+            <!-- Card do Perfil -->
+            <div class="relative">
+                <!-- Banner -->
+                <div class="h-36 bg-center bg-cover rounded-t-lg" style="background-image: url('https://placehold.co/600x144/1a1b1e/ffffff?text=Banner')"></div>
+
+                <!-- Avatar e Nome -->
+                <div class="absolute top-24 left-4 flex items-end space-x-4">
+                     <div class="relative">
+                        <img class="h-24 w-24 rounded-full border-4 border-[#1e1f22] object-cover" src="https://placehold.co/128x128/7289da/ffffff?text=EU" alt="Avatar do usuário">
+                        <!-- Status online -->
+                        <div class="absolute bottom-1 right-1 h-6 w-6 bg-green-500 rounded-full border-4 border-[#1e1f22]"></div>
+                    </div>
+                </div>
+
+                <!-- Conteúdo abaixo do banner -->
+                <div class="p-4 pt-16 bg-[#2b2d31] rounded-b-lg">
+                    <!-- Nome de usuário e Badges -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-[#f2f3f5]">Seu Nome<span class="text-[#949ba4]">#1337</span></h2>
+                        <!-- Badges de Habilidades -->
+                        <div class="flex items-center space-x-2 mt-2">
+                            <!-- Badge HTML5 -->
+                            <div class="group relative">
+                                <img src="https://skillicons.dev/icons?i=html" alt="HTML5" class="h-6 w-6">
+                                <span class="absolute -top-8 left-1/2 -translate-x-1/2 w-auto px-2 py-1 bg-[#1e1f22] text-xs font-semibold text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">HTML5</span>
+                            </div>
+                            <!-- Badge CSS3 -->
+                            <div class="group relative">
+                                <img src="https://skillicons.dev/icons?i=css" alt="CSS3" class="h-6 w-6">
+                                 <span class="absolute -top-8 left-1/2 -translate-x-1/2 w-auto px-2 py-1 bg-[#1e1f22] text-xs font-semibold text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">CSS3</span>
+                            </div>
+                            <!-- Badge JavaScript -->
+                            <div class="group relative">
+                                <img src="https://skillicons.dev/icons?i=js" alt="JavaScript" class="h-6 w-6">
+                                 <span class="absolute -top-8 left-1/2 -translate-x-1/2 w-auto px-2 py-1 bg-[#1e1f22] text-xs font-semibold text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">JavaScript</span>
+                            </div>
+                             <!-- Badge React -->
+                            <div class="group relative">
+                                <img src="https://skillicons.dev/icons?i=react" alt="React" class="h-6 w-6">
+                                 <span class="absolute -top-8 left-1/2 -translate-x-1/2 w-auto px-2 py-1 bg-[#1e1f22] text-xs font-semibold text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">React</span>
+                            </div>
+                             <!-- Badge Figma -->
+                            <div class="group relative">
+                                <img src="https://skillicons.dev/icons?i=figma" alt="Figma" class="h-6 w-6">
+                                 <span class="absolute -top-8 left-1/2 -translate-x-1/2 w-auto px-2 py-1 bg-[#1e1f22] text-xs font-semibold text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">Figma</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-px bg-[#3f4147] my-4"></div>
+
+                    <!-- Seção Sobre Mim -->
+                    <div>
+                        <h3 class="text-xs font-bold uppercase text-[#949ba4]">Sobre mim</h3>
+                        <p class="mt-2 text-sm text-[#dcdee1]">
+                           Desenvolvedor Front-end e Designer UI/UX com 5+ anos de experiência. Transformo ideias complexas em interfaces bonitas, intuitivas e funcionais. Meu objetivo é sempre unir design de alta qualidade com código eficiente.
+                        </p>
+                    </div>
+
+                    <div class="w-full h-px bg-[#3f4147] my-4"></div>
+
+                    <!-- Conexões Sociais -->
+                     <div>
+                        <h3 class="text-xs font-bold uppercase text-[#949ba4]">Conecte-se comigo</h3>
+                        <div class="mt-2 space-y-2">
+                            <!-- GitHub -->
+                           <a href="#" class="flex items-center p-2 bg-[#313338] rounded-lg transition-colors hover:bg-[#3f4147]">
+                               <img src="https://skillicons.dev/icons?i=github" class="h-8 w-8" alt="GitHub Logo">
+                               <span class="ml-3 font-semibold text-[#f2f3f5]">/seu-usuario</span>
+                           </a>
+                           <!-- LinkedIn -->
+                           <a href="#" class="flex items-center p-2 bg-[#313338] rounded-lg transition-colors hover:bg-[#3f4147]">
+                                <svg class="h-8 w-8 text-[#0077b5]" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.23 0H1.77C.79 0 0 .79 0 1.77v20.46C0 23.21.79 24 1.77 24h20.46c.98 0 1.77-.79 1.77-1.77V1.77C24 .79 23.21 0 22.23 0M7.06 20.45h-3.5V8.97h3.5v11.48Zm-1.75-12.62c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2Zm15.14 12.62h-3.5v-5.5c0-1.31-.02-3-1.82-3-1.83 0-2.11 1.43-2.11 2.9v5.6h-3.5V8.97h3.36v1.54h.05c.47-.88 1.62-1.82 3.31-1.82 3.54 0 4.2 2.33 4.2 5.36v6.2Z"/></svg>
+                               <span class="ml-3 font-semibold text-[#f2f3f5]">/seu-linkedin</span>
+                           </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Seletores de elementos do DOM
+        const mainContainer = document.getElementById('main-container');
+        const openProfileBtn = document.getElementById('open-profile-btn');
+        const closeProfileBtn = document.getElementById('close-profile-btn');
+        const profileModalOverlay = document.getElementById('profile-modal-overlay');
+        const profileModalContent = document.getElementById('profile-modal-content');
+
+        /**
+         * Abre o modal de perfil com animações.
+         */
+        function openModal() {
+            // Garante que as classes de transição sejam aplicadas
+            profileModalOverlay.classList.remove('pointer-events-none');
+            profileModalOverlay.classList.add('opacity-100');
+            profileModalContent.classList.add('scale-100');
+            profileModalContent.classList.remove('scale-95');
+            mainContainer.classList.add('modal-open-blur');
+        }
+
+        /**
+         * Fecha o modal de perfil com animações.
+         */
+        function closeModal() {
+            profileModalOverlay.classList.remove('opacity-100');
+            profileModalContent.classList.remove('scale-100');
+            profileModalContent.classList.add('scale-95');
+            mainContainer.classList.remove('modal-open-blur');
+
+            // Desabilita eventos do mouse após a transição para performance
+            setTimeout(() => {
+                profileModalOverlay.classList.add('pointer-events-none');
+            }, 300); // Deve corresponder à duração da transição
+        }
+
+        // Event Listeners
+        openProfileBtn.addEventListener('click', openModal);
+        closeProfileBtn.addEventListener('click', closeModal);
+
+        // Permite fechar o modal clicando no overlay (fundo)
+        profileModalOverlay.addEventListener('click', (event) => {
+            if (event.target === profileModalOverlay) {
+                closeModal();
+            }
+        });
+        
+        // Permite fechar o modal com a tecla 'Escape'
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !profileModalOverlay.classList.contains('pointer-events-none')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
